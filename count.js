@@ -74,25 +74,26 @@ app.post('/', urlencodedParser, function (req, res){
         } else{
         	// input process
         	var reply='';
-			var CW = req.body.cword;
-			var words = CW.split(" ").length;
+		var CW = req.body.cword;
+		var words = CW.replace("\n"," ");
+		words = words.split(" ").length;
 
-			res.set('Content-Type', 'text/html');
-			var ht = '';
-				ht +="<html>";
-				ht +="<head>";
-				ht +="<title>Dev Challenge - Word Count</title>";
-				ht +="</head>";
-				ht +="<body>";
-				ht +="<textarea rows='10' cols='40' type='text' name='cword'>" + CW + "</textarea> ";
-				ht +="<br/>";
-				ht +="words: " + words;
-				ht +="<br/>";
-				ht += '<a href=\"./" >Count another text</a>';
-				ht +="</body>";
-				ht +="</html>";
-			res.send( ht );
-			co++;
+		res.set('Content-Type', 'text/html');
+		var ht = '';
+			ht +="<html>";
+			ht +="<head>";
+			ht +="<title>Dev Challenge - Word Count</title>";
+			ht +="</head>";
+			ht +="<body>";
+			ht +="<textarea rows='10' cols='40' type='text' name='cword'>" + CW + "</textarea> ";
+			ht +="<br/>";
+			ht +="words: " + words;
+			ht +="<br/>";
+			ht += '<a href=\"./" >Count another text</a>';
+			ht +="</body>";
+			ht +="</html>";
+		res.send( ht );
+		co++;
         }
     });
 
